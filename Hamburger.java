@@ -4,43 +4,35 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Hamburger {
-	
-	// teller for hamburger nummer
+
 	public int i = 0;
 
-	static Queue<String> rutsjebane = new  LinkedList<>();
-
-	public boolean erLedig() {
-		if (rutsjebane.size() < 5) {
-			return true;
-		}
-		return false;
-	}
+	static Queue<String> rutsjebane = new LinkedList<>();
 
 	public static Queue<String> getRutsjebane() {
 		return rutsjebane;
 	}
 
+	public boolean erFull() {
+		return rutsjebane.size() == 5;
+	}
+
+	public boolean erTom() {
+		return rutsjebane.size() == 0;
+	}
+
 	public void LeggPaa(int i) {
-		rutsjebane.add("(" +i + ")");
+		rutsjebane.add("(" + i + ")");
 		this.i = i;
+	}
+
+	public String taAv() {
+		String fjernet = rutsjebane.remove();
+		return fjernet;
 	}
 
 	public int getI() {
 		return i;
 	}
 
-	public String taAv() {
-		String fjernet = rutsjebane.remove();
-		return fjernet;
-		
-	}
-
-	public boolean erTom() {
-		if (rutsjebane.size() > 0) {
-			return true;
-		}
-		return false;
-	}
-	
 }
